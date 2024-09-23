@@ -1,3 +1,6 @@
+#ifndef STRUCT_TO_DESTROY_H
+#define STRUCT_TO_DESTROY_H
+
 struct StructToDestroy {
 	bool* destroyed_flag;
 
@@ -5,3 +8,5 @@ struct StructToDestroy {
 
 	~StructToDestroy() { *destroyed_flag = true; }
 };
+
+#endif
