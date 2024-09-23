@@ -1,4 +1,5 @@
-#include <iostream> // не должно быть
+#ifndef SHARED_PTR_H
+#define SHARED_PTR_H
 
 template<typename T>
 class SharedPtr {
@@ -59,7 +60,6 @@ public:
 
             ptr = other.ptr;
             ref_count = other.ref_count;
-
             other.ptr = nullptr;
             other.ref_count = nullptr;
         }
@@ -87,3 +87,5 @@ public:
         return ref_count ? *ref_count : 0;
     }
 };
+
+#endif

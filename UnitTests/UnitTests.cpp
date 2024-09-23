@@ -1,5 +1,7 @@
 ﻿#include "CppUnitTest.h"
-#include "..\Project1\creator.h"
+#include "..\Project1\UniquePtr.h"
+#include "..\Project1\SharedPtr.h"
+#include "..\Project1\Creator.h"
 #include "StructToDestroy.h"
 
 

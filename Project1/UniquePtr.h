@@ -1,4 +1,5 @@
-#include <iostream>
+#ifndef UNIQUE_PTR_H
+#define UNIQUE_PTR_H
 
 template<typename T>
 class UniquePtr {
@@ -53,3 +54,5 @@ public:
         delete pointer;
     }
 };
+
+#endif
