@@ -1,4 +1,4 @@
-#include <iostream>
+#include <iostream> // не должно быть
 
 template<typename T>
 class SharedPtr {
@@ -6,17 +6,14 @@ private:
     T* ptr;
     int* ref_count;
 
-    void Delete() {
-        delete ptr;
-        delete ref_count;
-    }
-
-    void decrease_counter() {
+    void release() {
         if (ref_count) {
             *ref_count -= 1;
 
-            if(*ref_count == 0)
-                Delete();
+            if (*ref_count == 0) {
+                delete ptr;
+                delete ref_count;
+            }
         }
     }
 
@@ -36,7 +33,7 @@ public:
 
     SharedPtr& operator=(const SharedPtr& other) {
         if (this != &other) {
-            decrease_counter();
+            release();
 
             ptr = other.ptr;
             ref_count = other.ref_count;
@@ -58,7 +55,7 @@ public:
 
     SharedPtr& operator=(SharedPtr&& other) noexcept {
         if (this != &other) {
-            decrease_counter();
+            release();
 
             ptr = other.ptr;
             ref_count = other.ref_count;
@@ -83,7 +80,7 @@ public:
     }
 
     ~SharedPtr() {
-        decrease_counter();
+        release();
     }
 
     int use_count() const {

@@ -1,6 +1,7 @@
 ﻿#include "CppUnitTest.h"
-#include "..\Project1\Creator.h"
+#include "..\Project1\creator.h"
 #include "StructToDestroy.h"
+
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
